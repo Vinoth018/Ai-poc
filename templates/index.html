@@ -1,0 +1,90 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Translator</title>
+</head>
+<body>
+    <h1>Upload Video and Select Language for Translation</h1>
+    <form action="/" method="POST" enctype="multipart/form-data">
+        <label for="video">Upload Video:</label><br>
+        <input type="file" name="video" accept="video/*" required><br><br>
+        
+        <label for="language">Select Language:</label><br>
+        <select name="language" required>
+            {% for lang_code, lang_name in languages.items() %}
+                <option value="{{ lang_code }}">{{ lang_name }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <button type="submit">Translate Video</button>
+    </form>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Translator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        h1 {
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <div class="container">
+        <h1>Upload Video and Select Language for Translation</h1>
+        <form action="/" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="video">Upload Video:</label>
+                <input type="file" class="form-control" name="video" accept="video/*" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="language">Select Language:</label>
+                <select class="form-control" name="language" required>
+                    {% for lang_code, lang_name in languages.items() %}
+                        <option value="{{ lang_code }}">{{ lang_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Translate Video</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
