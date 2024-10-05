@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram Reels Clone</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -30,11 +31,11 @@
             margin: 0;
             font-size: 24px;
             text-align: center;
-            color: #0095f6; /* Instagram primary color */
+            color: #0095f6; 
         }
 
         .reel-container {
-            height: 700px;
+            height: 730px;
             width: 400px;
             background-color: white;
             border: 1px solid #dbdbdb;
@@ -44,7 +45,7 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            
+            position: relative;
         }
 
         .reel-header {
@@ -91,12 +92,6 @@
             background-color: #007bb5;
         }
 
-        .video-container {
-            width: 100%;
-            height: 400px;
-            background-color: black;
-        }
-
         .reel-actions {
             display: flex;
             justify-content: space-between;
@@ -120,7 +115,7 @@
             padding: 10px;
             border-top: 1px solid #dbdbdb;
             background: #f9f9f9;
-            display: none; /* Comments section is hidden by default */
+            display: none; 
         }
 
         .comment-item {
@@ -160,6 +155,25 @@
             cursor: pointer;
         }
 
+        .footer-icons {
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            background-color: white;
+            position: absolute;
+            bottom: 0;
+            border-top: 1px solid #dbdbdb;
+        }
+
+        .footer-icons i {
+            font-size: 24px;
+            cursor: pointer;
+            margin-left: -22px;
+            
+            
+        }
+
         footer {
             width: 100%;
             background-color: #ffffff;
@@ -175,11 +189,37 @@
             margin: 0;
             font-size: 14px;
         }
+
+        .caption {
+            padding-bottom: 8px;
+            padding-right: 5px;
+        }
+
+        .likes {
+            padding-bottom: 5px;
+        }
+
+        .heading {
+            margin-top: -45px;
+        }
+
+        .company-pic {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 10px;
+        }
+        .video-container {
+            width: 100%;
+            height: 400px;
+            background-color: black;
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>Instagram Reels Clone</h1>
+    <header style="height: 55px;">
+        <img src="{{ url_for('static', filename='images/Twilight.png') }}" class="company-pic" alt="Profile Picture">
+        <h1 class="heading">Language Translator</h1>
     </header>
 
     <div class="reel-container">
@@ -190,95 +230,90 @@
                 <span class="username">vinoth_0108</span>
             </div>
             <button class="follow-button" onclick="toggleFollow(this)">Follow</button>
-            <button style="background-color: transparent; border: none; cursor: pointer;"><strong>...</strong></button>
+            <button style="background-color: transparent; border: none; cursor: pointer; color: black;"><i class="fa-solid fa-ellipsis"></i></button>
         </div>
-
 
         <div class="video-container">
             <video controls width="100%" height="100%" autoplay loop muted>
                 <source src="{{ url_for('static', filename=video_path.split('/')[-1]) }}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-
         </div>
-
 
         <div class="reel-actions">
             <div class="left-actions">
                 <img src="https://img.icons8.com/ios/24/000000/like--v1.png" class="action-icon" alt="Like" onclick="toggleLike(this)">
-                <img src="https://img.icons8.com/ios/24/000000/speech-bubble.png" class="action-icon" alt="Comment" onclick="toggleComments()">
+                <img style="" src="https://img.icons8.com/ios/24/000000/speech-bubble.png" class="action-icon" alt="Comment" onclick="toggleComments()">
                 <img src="https://img.icons8.com/ios/24/000000/paper-plane.png" class="action-icon" alt="Share">
             </div>
             <img src="https://img.icons8.com/ios/24/000000/bookmark.png" class="action-icon" alt="Save">
         </div>
 
-
         <div class="likes">
             <span style="padding-left: 7px;"><strong>123 likes</strong></span>
         </div>
 
-
         <div class="caption">
-            <span style="padding-left: 7px; padding-bottom: 15px;"><strong>vinoth_0108</strong> Exploring AI technology with this cool reel!</span>
+            <span style="padding-left: 7px; padding-bottom: 15px;"><strong>vinoth_0108</strong> Translating speech to multiple languages!</span>
         </div>
-
 
         <div class="comments-container" id="commentsContainer">
             <h4>Comments</h4>
             <div id="commentList"></div>
         </div>
 
-
         <div class="add-comment" id="addCommentSection">
             <input type="text" id="commentInput" placeholder="Add a comment...">
             <button onclick="postComment()">Post</button>
         </div>
+
+        <div class="footer-icons">
+            <i class="fa-solid fa-house"></i>
+            <i class="fas fa-search"></i>
+            <i class="fa-regular fa-square-plus"></i>
+            <i><img style="height: 25px; width: 28px;" src="{{ url_for('static', filename='images/reels.png') }}" alt="Profile Picture"></i>
+            <i><img style="height: 25px; width: 28px;" src="{{ url_for('static', filename='images/profile.PNG') }}" alt="Profile Picture"></i>
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Instagram Reels Clone</p>
-    </footer>
-
-    <script>
-        let commentCount = 0;
-
-        function toggleFollow(button) {
-            if (button.textContent === "Follow") {
-                button.textContent = "Followed";
-                button.classList.add("followed");
-            } else {
-                button.textContent = "Follow";
-                button.classList.remove("followed");
-            }
-        }
-
-        function toggleLike(icon) {
-            if (icon.src.includes("like--v1.png")) {
-                icon.src = "https://img.icons8.com/ios/24/ff0000/like--v1.png"; // Red heart icon
-            } else {
-                icon.src = "https://img.icons8.com/ios/24/000000/like--v1.png"; // Original like icon
-            }
-        }
-
-        function toggleComments() {
-            const commentSection = document.getElementById('commentsContainer');
-            commentSection.style.display = commentSection.style.display === "none" ? "block" : "none";
-        }
-
-        function postComment() {
-            const commentInput = document.getElementById('commentInput');
-            const commentText = commentInput.value.trim();
-
-            if (commentText) {
-                const commentList = document.getElementById('commentList');
-                const newComment = document.createElement('div');
-                newComment.classList.add('comment-item');
-                newComment.innerHTML = `<img src="https://img.icons8.com/color/48/000000/user-male.png" alt="User Image">
-                                        <span><strong>user${++commentCount}</strong> ${commentText}</span>`;
-                commentList.appendChild(newComment);
-                commentInput.value = ''; // Clear input field
-            }
-        }
-    </script>
 </body>
+<script>
+    function toggleComments() {
+        const commentsContainer = document.getElementById('commentsContainer');
+        commentsContainer.style.display = commentsContainer.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function toggleLike(icon) {
+    if (icon.src.includes("like--v1.png")) {
+        icon.src = "https://img.icons8.com/ios-filled/50/fa314a/like.png"; 
+    } else {
+        icon.src = "https://img.icons8.com/ios/50/000000/like--v1.png"; 
+    }
+    }
+
+
+    function toggleFollow(button) {
+        if (button.innerText === 'Follow') {
+            button.innerText = 'Following';
+            button.classList.add('followed');
+        } else {
+            button.innerText = 'Follow';
+            button.classList.remove('followed');
+        }
+    }
+
+    function postComment() {
+        const commentInput = document.getElementById('commentInput');
+        const commentList = document.getElementById('commentList');
+
+        const commentItem = document.createElement('div');
+        commentItem.classList.add('comment-item');
+        commentItem.innerHTML = `
+            <img src="{{ url_for('static', filename='images/profile.PNG') }}" alt="Profile Picture">
+            <p><strong>vinoth_0108</strong> ${commentInput.value}</p>
+        `;
+        commentList.appendChild(commentItem);
+        commentInput.value = '';
+    }
+</script>
 </html>
