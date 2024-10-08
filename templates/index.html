@@ -33,42 +33,51 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa;
-            padding: 20px;
+            background-color: #e9ecef; /* Light grey background */
+            padding: 40px 0; /* Increased top/bottom padding */
         }
         .container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff; /* White background for the form */
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Slightly darker shadow */
             padding: 30px;
+            max-width: 400px; /* Compact width */
+            margin: auto; /* Centering the container */
         }
         h1 {
-            color: #343a40;
-            margin-bottom: 20px;
+            color: #343a40; /* Dark text color */
+            font-size: 1.8rem; /* Larger heading */
+            margin-bottom: 25px; /* More space below the heading */
+            text-align: center; /* Centered heading */
         }
         label {
-            font-weight: bold;
+            font-weight: 500; /* Medium font weight */
+            color: #495057; /* Darker grey for labels */
         }
         button {
-            background-color: #007bff;
+            background-color: #17a2b8; /* Teal color */
             color: white;
+            font-weight: bold; /* Bold button text */
+            border-radius: 20px; /* Rounded button */
         }
         button:hover {
-            background-color: #0056b3;
+            background-color: #138496; /* Darker teal on hover */
+        }
+        .form-group {
+            margin-bottom: 20px; /* More space between form groups */
         }
     </style>
 </head>
 <body>
 
-    
     <div class="container">
-        <h1>Upload Video and Select Language for Translation</h1>
+        <h1>Video Translation</h1>
         <form action="/" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="video">Upload Video:</label>
+                <label for="video">Upload Video:</label>  
+
                 <input type="file" class="form-control" name="video" accept="video/*" required>
-            </div>
-            
+            </div> 
             <div class="form-group">
                 <label for="language">Select Language:</label>
                 <select class="form-control" name="language" required>
@@ -78,7 +87,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary">Translate Video</button>
+            <button type="submit" class="btn btn-primary btn-block">Translate Video</button> <!-- Full-width button -->
         </form>
     </div>
 

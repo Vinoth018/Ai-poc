@@ -133,7 +133,7 @@ import concurrent.futures
 app = Flask(__name__)
 
 # Load the Whisper model once at startup
-model = whisper.load_model("base")
+model = whisper.load_model("tiny")
 
 # Language choices for translation
 language_choices = {
